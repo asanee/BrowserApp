@@ -75,7 +75,7 @@ namespace BrowserApp
                 //Check if key is already present 
                 if (FindAppkey == "8000")
                 {
-                    MessageBox.Show("Required Application Settings Present");
+                    //MessageBox.Show("Required Application Settings Present");
                     regkey.Close();
                     return;
                 }
@@ -89,7 +89,7 @@ namespace BrowserApp
 
                 if (FindAppkey == "8000")
                 {
-                    MessageBox.Show("Application Settings Applied Successfully");
+                    //MessageBox.Show("Application Settings Applied Successfully");
                 }
                 else
                 {

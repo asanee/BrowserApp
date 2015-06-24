@@ -5,8 +5,13 @@ namespace BrowserApp
 {
     public partial class Form1 : Form
     {
-        public Form1(string url) : this()
+        private string _url;
+
+        public Form1(string url)
+            : this()
         {
+            _url = url;
+
             webBrowser1.Url = new Uri(url);
         }
 
@@ -15,7 +20,7 @@ namespace BrowserApp
             InitializeComponent();
             webBrowser1.DocumentCompleted += (s,
                                               e) =>
-            { 
+            {
                 Text = webBrowser1.Document.Title;
             };
         }
@@ -25,6 +30,11 @@ namespace BrowserApp
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            if (string.IsNullOrWhiteSpace(_url))
+            {
+                return;
+            }
 
             nativeBrowser = (SHDocVw.WebBrowser)webBrowser1.ActiveXInstance;
             nativeBrowser.NewWindow2 += nativeBrowser_NewWindow2;
@@ -42,9 +52,17 @@ namespace BrowserApp
 
         void nativeBrowser_NewWindow2(ref object ppDisp, ref bool Cancel)
         {
+            this.Hide();
             var popup = new Form1();
+
+            popup.FormClosed += popup_FormClosed;
             popup.Show(this);
             ppDisp = popup.webBrowser1.ActiveXInstance;
+        }
+
+        void popup_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
