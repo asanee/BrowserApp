@@ -33,8 +33,7 @@ namespace BrowserApp
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1("http://www.idateasia.com/lady"));
-            //Application.Run(new Form1("http://localhost:9090"));
+            Application.Run(new Form1("http://localhost:9090"));
         }
 
         [DllImport("wininet.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto, SetLastError = true)]
