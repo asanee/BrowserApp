@@ -7,6 +7,9 @@ namespace BrowserApp
     using System.Runtime.InteropServices;
     using Microsoft.Win32;
 
+    /// <summary>
+    /// 
+    /// </summary>
     static class Program
     {
         /// <summary>
